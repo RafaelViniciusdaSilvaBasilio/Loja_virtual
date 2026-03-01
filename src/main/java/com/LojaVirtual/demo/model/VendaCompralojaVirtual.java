@@ -43,13 +43,19 @@ public class VendaCompralojaVirtual implements Serializable {
     private NotaFiscalVenda notaFiscalVenda;
 
     @ManyToOne
-    @JoinColumn(name = "cupom_desc_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "cupom_desc_fk"))
+    @JoinColumn(name = "cupom_desc_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "cupom_desc_fk"))
     private CupDesc cupDesc;
 
+    @Column(nullable = false)
     private BigDecimal valorFrete;
 
-    private Integer diaentrega;
+    @Column(nullable = false)
+    private Integer diaEntrega;
 
+    @Column(nullable = false)
+    private Date diaVenda;
+
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataEntrega;
 
@@ -134,11 +140,19 @@ public class VendaCompralojaVirtual implements Serializable {
     }
 
     public Integer getDiaentrega() {
-        return diaentrega;
+        return diaEntrega;
     }
 
-    public void setDiaentrega(Integer diaentrega) {
-        this.diaentrega = diaentrega;
+    public void setDiaentrega(Integer diaEntrega) {
+        this.diaEntrega = diaEntrega;
+    }
+
+    public Date getDiaVenda() {
+        return diaVenda;
+    }
+
+    public void setDiaVenda(Date diaVenda) {
+        this.diaVenda = diaVenda;
     }
 
     public Date getDataEntrega() {
